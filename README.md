@@ -2,27 +2,27 @@
 
 
 ## Functionality
-*Returning a list of all created people 
+* Returning a list of all created people 
 '''
 GET /api/people
 '''
-*Returning a list of people matching given first/last name => filter
+* Returning a list of people matching given first/last name => filter
 '''
 GET /api/people?filter={filter}
 '''
-*Returning person matching this id
+* Returning person matching this id
 '''
 GET / api/people/{id}
 '''
-*Creating a person
+* Creating a person
 '''
 POST /api/people
 '''
-*Creating a person (idempotent)
+* Creating a person (idempotent)
 '''
 PUT /api/people/{id}
 '''
-*Removing a person
+* Removing a person
 '''
 DELETE /api/people/{id}
 '''
