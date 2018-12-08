@@ -18,7 +18,7 @@ GET / api/people/{id}
 ```
 POST /api/people
 ```
-* Creating a person (idempotent)
+* Modifyin a person specified by a given id
 ```
 PUT /api/people/{id}
 ```
@@ -51,4 +51,5 @@ Now send API requests to http://localhost:8000/
 
 ## Built With
 * Python 3.7.1 
-* Django 2.1.4 
+* Django 2.1.4
+
