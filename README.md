@@ -4,32 +4,32 @@
 ## Functionality
 * Returning a list of all created people 
 ```
-GET /api/people
+GET localhost:8000/people
 ```
 
 * Returning a list of people matching given first/last name => filter
 ```
-GET /api/people?filter={filter}
+GET localhost:8000/people?filter={filter}
 ```
 
 * Returning person matching this id
 ```
-GET / api/people/{id}
+GET localhost:8000/people/{id}
 ```
 
 * Creating a person
 ```
-POST /api/people
+POST localhost:8000/people
 ```
 
 * Modifyin a person specified by a given id
 ```
-PUT /api/people/{id}
+PUT localhost:8000/people/{id}
 ```
 
 * Removing a person
 ```
-DELETE /api/people/{id}
+DELETE localhost:8000/people/{id}
 ```
 
 ### Person format
