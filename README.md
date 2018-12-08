@@ -35,9 +35,16 @@ DELETE /api/people/{id}
 }
 
 ## Running
+Once Python3 is installed and repo is cloned, navigate to the root directory of the project:
 ```
-$ ./script
+~/LenelS2WebService$ pip3 install -r requirements.txt
 ```
+
+Once dependencies have been installed, navigate to /personapi 
+```
+~/LenelS2WebService/personapi$ python3 manage.py runserver
+```
+Now send API requests to http://localhost:8000/
 
 ## Assumptions
 * A person's id field must be unique
