@@ -6,22 +6,27 @@
 ```
 GET /api/people
 ```
+
 * Returning a list of people matching given first/last name => filter
 ```
 GET /api/people?filter={filter}
 ```
+
 * Returning person matching this id
 ```
 GET / api/people/{id}
 ```
+
 * Creating a person
 ```
 POST /api/people
 ```
+
 * Modifyin a person specified by a given id
 ```
 PUT /api/people/{id}
 ```
+
 * Removing a person
 ```
 DELETE /api/people/{id}
@@ -35,12 +40,12 @@ DELETE /api/people/{id}
 }
 
 ## Running
-Once Python3 is installed and repo is cloned, navigate to the root directory of the project:
+Once Python3 is installed and repo is cloned, navigate to the root directory of the project and execute:
 ```
 ~/LenelS2WebService$ pip3 install -r requirements.txt
 ```
 
-Once dependencies have been installed, navigate to /personapi 
+Once dependencies have been installed, navigate to /personapi and execute:
 ```
 ~/LenelS2WebService/personapi$ python3 manage.py runserver
 ```
