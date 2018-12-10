@@ -4,20 +4,21 @@
 ## Implemented Functionality
 * Returning a list of all created people 
 ```
-GET /api/people
+GET localhost:8000/people
 ```
 * Creating a person
 ```
-POST /api/people
+POST localhost:8000/people
 ```
+
 ## NonImplemented Functionality
-* Modifying a person (idempotent)
+* Modifying a person specified by a given id
 ```
-PUT /api/people/{id}
+PUT localhost:8000/people/{id}
 ```
 * Removing a person
 ```
-DELETE /api/people/{id}
+DELETE localhost:8000/people/{id}
 ```
 * Returning a list of people matching given first/last name => filter
 ```
@@ -35,12 +36,12 @@ GET / api/people/{id}
 }
 
 ## Running
-Once Python3 is installed and repo is cloned, navigate to the root directory of the project:
+Once Python3 is installed and repo is cloned, navigate to the root directory of the project and execute:
 ```
 ~/LenelS2WebService$ pip3 install -r requirements.txt
 ```
 
-Once dependencies have been installed, navigate to /personapi 
+Once dependencies have been installed, navigate to /personapi and execute:
 ```
 ~/LenelS2WebService/personapi$ python3 manage.py runserver
 ```
@@ -48,4 +49,5 @@ Now send API requests to http://localhost:8000/person
 
 ## Built With
 * Python 3.7.1 
-* Django 2.1.4 
+* Django 2.1.4
+
