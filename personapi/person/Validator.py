@@ -1,5 +1,5 @@
 
-from PersonObj import PersonObj
+from person import PersonObj
 
 
 class Validator:
