@@ -1,10 +1,23 @@
 # LenelS2WebService
 
 
-## Functionality
+## Implemented Functionality
 * Returning a list of all created people 
 ```
 GET /api/people
+```
+* Creating a person
+```
+POST /api/people
+```
+## NonImplemented Functionality
+* Modifying a person (idempotent)
+```
+PUT /api/people/{id}
+```
+* Removing a person
+```
+DELETE /api/people/{id}
 ```
 * Returning a list of people matching given first/last name => filter
 ```
@@ -14,19 +27,6 @@ GET /api/people?filter={filter}
 ```
 GET / api/people/{id}
 ```
-* Creating a person
-```
-POST /api/people
-```
-* Creating a person (idempotent)
-```
-PUT /api/people/{id}
-```
-* Removing a person
-```
-DELETE /api/people/{id}
-```
-
 ### Person format
 {
   "id": X,
@@ -44,10 +44,7 @@ Once dependencies have been installed, navigate to /personapi
 ```
 ~/LenelS2WebService/personapi$ python3 manage.py runserver
 ```
-Now send API requests to http://localhost:8000/
-
-## Assumptions
-* A person's id field must be unique
+Now send API requests to http://localhost:8000/person
 
 ## Built With
 * Python 3.7.1 
