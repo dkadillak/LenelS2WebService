@@ -41,13 +41,18 @@ Once Python3 is installed and repo is cloned, navigate to the root directory of 
 ~/LenelS2WebService$ pip3 install -r requirements.txt
 ```
 
-Once dependencies have been installed, navigate to /personapi and execute:
+
+Once dependencies have been installed, navigate to /project, and set FLASK_APP
 ```
-~/LenelS2WebService/personapi$ python3 manage.py runserver
+~/LenelS2WebService/project$ export FLASK_APP=app.py
 ```
-Now send API requests to http://localhost:8000/person
+Run the server with 
+```
+~/LenelS2WebService/project$ flask run
+```
+Now send API requests to http://127.0.0.1:5000/person/
 
 ## Built With
 * Python 3.7.1 
-* Django 2.1.4
+* Flask 1.0.2
 
