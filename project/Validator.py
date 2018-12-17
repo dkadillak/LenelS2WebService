@@ -1,5 +1,6 @@
 
-from person import PersonObj
+from project.Person import Person
+# import project.InvalidApiCall as InvalidApiCall
 
 
 class Validator:
@@ -7,6 +8,7 @@ class Validator:
         self.person_list = []
 
     def add_person(self, person):
+
         if self.is_id_unique(person):
             self.person_list.append(person)
             return True
@@ -14,16 +16,17 @@ class Validator:
             return False
 
     def is_id_unique(self, person):
-
         for item in self.person_list:
             if person.info["id"] == item.info["id"]:
-                raise Exception("Person already exists with id: "+str(person.info["id"]))
+                # put exception throwing here later
+                # raise InvalidApiCall("Person already exists with id: "+str(person.info["id"]))
+                return False
         return True
 
 
 def main():
-    p = PersonObj(1, "a", "b")
-    p1 = PersonObj(1, "a", "b")
+    p = Person(1, "a", "b")
+    p1 = Person(2, "a", "b")
     v = Validator()
     print(v.add_person(p))
     print(v.add_person(p1))
