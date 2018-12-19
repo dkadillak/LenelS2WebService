@@ -4,33 +4,34 @@
 ## Implemented Functionality
 * Returning a list of all created people 
 ```
-GET localhost:8000/people
+GET localhost:5000/people
 ```
 * Creating a person
 ```
-POST localhost:8000/people
-```
-
-## NonImplemented Functionality
-* Modifying a person specified by a given id
-```
-PUT localhost:8000/people/{id}
+POST localhost:5000/people
 ```
 * Removing a person
 ```
-DELETE localhost:8000/people/{id}
+DELETE localhost:5000/people/{id}
 ```
 * Returning a list of people matching given first/last name => filter
 ```
-GET /api/people?filter={filter}
+GET localhost:5000/people?filter={filter}
 ```
 * Returning person matching this id
 ```
-GET / api/people/{id}
+GET localhost:5000/people/{id}
 ```
+
+## Functionality in progress
+* Modifying a person specified by a given id
+```
+PUT localhost:5000/people/{id}
+```
+
 ### Person format
 {
-  "id": X,
+  "id": "X",
   "first_name": "fname",
   "last_name": "lname"
 }
