@@ -4,29 +4,29 @@
 ## Implemented Functionality
 * Returning a list of all created people 
 ```
-GET localhost:5000/people
+GET localhost:5000/person
 ```
 * Creating a person
 ```
-POST localhost:5000/people
+POST localhost:5000/person
 ```
 * Removing a person
 ```
-DELETE localhost:5000/people/{id}
+DELETE localhost:5000/person/{id}
 ```
 * Returning a list of people matching given first/last name => filter
 ```
-GET localhost:5000/people?filter={filter}
+GET localhost:5000/person?filter={filter}
 ```
 * Returning person matching this id
 ```
-GET localhost:5000/people/{id}
+GET localhost:5000/person/{id}
 ```
 
 ## Functionality in progress
 * Modifying a person specified by a given id
 ```
-PUT localhost:5000/people/{id}
+PUT localhost:5000/person/{id}
 ```
 
 ### Person format
@@ -41,8 +41,6 @@ Once Python3 is installed and repo is cloned, navigate to the root directory of 
 ```
 ~/LenelS2WebService$ pip3 install -r requirements.txt
 ```
-
-
 Once dependencies have been installed, navigate to /project, and set FLASK_APP
 ```
 ~/LenelS2WebService/project$ export FLASK_APP=app.py
@@ -56,4 +54,8 @@ Now send API requests to http://127.0.0.1:5000/person/
 ## Built With
 * Python 3.7.1 
 * Flask 1.0.2
+
+## Assumptions
+* a person's id must be unique
+
 
