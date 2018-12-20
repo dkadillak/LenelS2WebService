@@ -59,8 +59,6 @@ Once Python3 is installed and repo is cloned, navigate to the root directory of 
 ```
 ~/LenelS2WebService$ pip3 install -r requirements.txt
 ```
-
-
 Once dependencies have been installed, navigate to /project, and set FLASK_APP
 ```
 ~/LenelS2WebService/project$ export FLASK_APP=app.py
@@ -78,7 +76,7 @@ Now send API requests to http://127.0.0.1:5000/person/
 ## Design Decisions
 * a person's id must be non-negative
 * a person's id must be unique
-* a person's fields will be maintained for any fields left blank in a PUT request body
+* a person's fields will be maintained for any fields left blank in a PUT request's body
 
 
 
