@@ -14,7 +14,7 @@ POST localhost:5000/person
 ```
 DELETE localhost:5000/person/{id}
 ```
-* Returning a list of people matching given first/last name => filter
+* Returning a list of people whose first/last name equals {filter}
 ```
 GET localhost:5000/person?filter={filter}
 ```
@@ -77,6 +77,7 @@ Now send API requests to http://127.0.0.1:5000/person/
 * a person's id must be non-negative
 * a person's id must be unique
 * a person's fields will be maintained for any fields left blank in a PUT request's body
+* a person's first and last name will fit a given {filter} only if they match exactly
 
 
 
