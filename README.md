@@ -1,7 +1,7 @@
 # LenelS2WebService
 
 
-## Implemented Functionality
+## Functionality
 * Returning a list of all created people 
 ```
 GET localhost:5000/person
@@ -23,7 +23,6 @@ GET localhost:5000/person?filter={filter}
 GET localhost:5000/person/{id}
 ```
 
-## Functionality in progress
 * Modifying a person specified by a given id
 ```
 PUT localhost:5000/person/{id}
@@ -31,10 +30,29 @@ PUT localhost:5000/person/{id}
 
 ### Person format
 {
-  "id": "X",
+  "id": X,
   "first_name": "fname",
   "last_name": "lname"
 }
+
+### Response format when expecting data
+When calling ```GET /person``` or ```GET /person?filter={filter}```
+```
+{
+    
+    "people": "[Person1,Person2,Person3]"
+
+}
+
+```
+When calling ```GET /person/{id}```
+```
+{
+    
+    "person": "{"id": X, "first_name": "fname", "last_name": "lname"}"
+
+}
+```
 
 ## Running
 Once Python3 is installed and repo is cloned, navigate to the root directory of the project and execute:
@@ -55,7 +73,10 @@ Now send API requests to http://127.0.0.1:5000/person/
 * Python 3.7.1 
 * Flask 1.0.2
 
-## Assumptions
+## Design Decisions
+* a person's id must be non-negative
 * a person's id must be unique
+* a person's fields will be maintained for any fields left blank in a PUT request's body
+
 
 
