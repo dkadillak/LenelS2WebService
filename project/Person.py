@@ -3,7 +3,7 @@ class Person:
 
     def __init__(self, person_id, first, last, debug=False):
         self.debug = debug
-        self.info = {"id": abs(int(person_id)), "first_name": str(first), "last_name": str(last)}
+        self.info = {"id": person_id, "first_name": str(first), "last_name": str(last)}
         # could implement check to see if names are actually strings
 
     # overriding to string to return info dictionary

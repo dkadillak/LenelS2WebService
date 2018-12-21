@@ -18,6 +18,20 @@ class Validator:
         else:
             return False
 
+    def is_id_valid(self, person_id):
+        if isinstance(person_id, str):
+            return "str_id"
+
+        try:
+            person_id = int(person_id)
+        except ValueError:
+            return "float_id"
+
+        if person_id <= 0:
+            return "inv_id_range"
+
+        return person_id
+
     def is_id_unique(self, person):
 
         if person.info["id"] in self.id_list:
@@ -37,9 +51,10 @@ class Validator:
             return -1
 
     def does_filter_match(self, list_filter, index):
-        if self.person_list[index].info["first_name"] == list_filter:
+        # check if the filter is contained in any substring of first/last name
+        if list_filter in self.person_list[index].info["first_name"]:
             return True
-        elif self.person_list[index].info["last_name"] == list_filter:
+        elif list_filter in self.person_list[index].info["last_name"]:
             return True
         else:
             return False
@@ -59,7 +74,7 @@ class Validator:
 
         index = self.does_id_exist(person_id)
         if index != -1:
-            if self.update_person(index, int(new_id), new_first, new_last):
+            if self.update_person(index, new_id, new_first, new_last):
                 return True
             else:
                 # if we reach this point, given id was not unique
@@ -75,11 +90,11 @@ class Validator:
         last_name = self.person_list[index].info["last_name"]
 
         # updating only the fields that changed
-        if self.did_id_change(person_id,new_id):
+        if self.did_id_change(person_id, new_id):
             if new_id in self.id_list:
                 return False
             else:
-                self.person_list[index].set_person_id(new_id)
+                self.person_list[index].set_person_id(int(new_id))
                 self.id_list[index] = new_id
 
         if self.did_first_name_change(first_name, new_first):
@@ -91,19 +106,19 @@ class Validator:
         return True
 
     def did_id_change(self, person_id, new_id):
-        if person_id == int(new_id) or new_id is None:
+        if str(person_id) == new_id or new_id == "":
             return False
         else:
             return True
 
     def did_first_name_change(self, first_name, new_first):
-        if first_name == new_first or new_first is None:
+        if first_name == new_first or new_first == "":
             return False
         else:
             return True
 
     def did_last_name_change(self, last_name, new_last):
-        if last_name == new_last or new_last is None:
+        if last_name == new_last or new_last == "":
             return False
         else:
             return True
@@ -119,8 +134,8 @@ def main():
 
     print(v.person_list)
 
-
-
+    print(isinstance("id", str))
+    print(isinstance(True, str))
 
 
 
