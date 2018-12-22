@@ -10,20 +10,23 @@ GET localhost:5000/person
 ```
 POST localhost:5000/person
 ```
-* Removing a person
+* Removing a person where {id} = 1,2,3....
 ```
 DELETE localhost:5000/person/{id}
 ```
-* Returning a list of people whose first/last name equals {filter}
+* Returning a list of people whose first/last name equals {filter} where {filter} = d,devin,steve...
 ```
 GET localhost:5000/person?filter={filter}
+
+example:
+GET localhost:5000/person?filter=devin
 ```
-* Returning person matching this id
+* Returning person matching this id, where {id} = 1,2,3...
 ```
 GET localhost:5000/person/{id}
 ```
 
-* Modifying a person specified by a given id
+* Modifying a person specified by a given id, where {id} = 1,2,3...
 ```
 PUT localhost:5000/person/{id}
 ```
@@ -80,7 +83,7 @@ Now send API requests to http://127.0.0.1:5000/person/
 * a person's id must be a positive integer >= 1
 * a person's first_name and last_name fields will be maintained if they are left blank in a PUT request's body
 
-###Person we're modifying:
+### Person we're modifying:
 ```
 {
   "id": 1,
@@ -88,7 +91,7 @@ Now send API requests to http://127.0.0.1:5000/person/
   "last_name": "Steverson"
 }
 ```
-###request: PUT /person/1
+### request: PUT /person/1
 ```
 body: 
 {
@@ -98,7 +101,7 @@ body:
     
 }
 ```
-###Result:
+### Result:
 ```
 {
   "id": 14,
@@ -107,10 +110,8 @@ body:
 }
 ```
 
-* ``` GET /person?filter``` will return all people whose first/last name contain the letter 'd' in it
-```
-GET /person?filter=d 
-```
+* ``` GET /person?filter=d``` will return all people whose first/last name contain the letter 'd' in it
+
 
 
 
