@@ -9,14 +9,17 @@ app = Flask('project')
 # instance variable which will store person objects
 personStorage = Validator()
 
-# how do I make sure only ?filter=name is used, not ?donkey=name
+
 @app.route('/person', methods=['GET'])
 def get_all_people():
     person_filter = request.args.get('filter')
     if person_filter is None:
-        p_list = json.dumps({"people": str(personStorage.person_list)})
-        resp = Response(p_list, status=200, mimetype='application/json')
-        return resp
+        if request.args.__len__() >= 1:
+            return generate_error_response("incorrect_filter")
+        else:
+            p_list = json.dumps({"people": str(personStorage.person_list)})
+            resp = Response(p_list, status=200, mimetype='application/json')
+            return resp
     else:
         p_list = json.dumps({"people": str(personStorage.create_list_by_filter(person_filter))})
         resp = Response(p_list, status=200, mimetype='application/json')
@@ -28,20 +31,18 @@ def create_person():
     data = request.get_json()
     call_status = validate_call(data)
 
-    '''
-        Only False, None, numeric zero of all types, and empty strings and containers == False,
-        so I need to check if the return is of boolean Type and equals True
-    '''
-    if type(call_status) == bool and call_status:
-        return generate_post_response(data)
-    else:
+    if isinstance(call_status, str):
         return generate_error_response(call_status)
+    else:
+        return generate_post_response(data)
 
 
 def generate_post_response(data):
     person_id = personStorage.does_id_exist(data['id'])
     if isinstance(person_id, str) and person_id != "id_doesn't_exist":
         return generate_error_response(person_id)
+    elif isinstance(person_id, int):
+        return generate_error_response("id_exists")
     else:
         p = Person(data['id'], data['first_name'], data['last_name'])
         personStorage.add_person(p)
@@ -63,7 +64,6 @@ def delete_person(person_id):
         return Response("Deleted person with id: "+person_id, status=200)
 
 
-# fix this not generating error code when id doesn't exist
 @app.route('/person/<person_id>', methods=['GET'])
 def get_person_by_id(person_id):
     index = personStorage.does_id_exist(person_id)
@@ -137,6 +137,8 @@ def generate_error_response(call_status):
         return Response("Error: the given id in the body of the request is assigned to another person", status=400)
     elif call_status == "id_doesn't_exist":
         return Response("Error: a person does not exist with the given id", status=400)
+    elif call_status == "incorrect_filter":
+        return Response("Error: incorrect request, use ?filter= instead", status=400)
 
 
 
