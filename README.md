@@ -29,11 +29,13 @@ PUT localhost:5000/person/{id}
 ```
 
 ### Person format
+```
 {
   "id": X,
   "first_name": "fname",
   "last_name": "lname"
 }
+```
 
 ### Response format when expecting data
 When calling ```GET /person``` or ```GET /person?filter={filter}```
@@ -76,23 +78,40 @@ Now send API requests to http://127.0.0.1:5000/person/
 ## Design Decisions
 * a person's id must be unique
 * a person's id must be a positive integer >= 1
-* a person's fields will be maintained if any fields are left blank in a PUT request's body
+* a person's first_name and last_name fields will be maintained if they are left blank in a PUT request's body
+
+###Person we're modifying:
 ```
-request: PUT /person/1
+{
+  "id": 1,
+  "first_name": "Steve",
+  "last_name": "Steverson"
+}
+```
+###request: PUT /person/1
+```
 body: 
 {
-    "id": "",
-    "first_name": "Steve",
-    "last_name": "Steverson"
+    "id": 14,
+    "first_name": "",
+    "last_name": "Steve-man"
     
 }
 ```
-assuming a person exists with id equal to 1, the "id" field of that person will remain 1 after the PUT request
-* a person's first and last name will fit a given {filter} if the filter equals the first/last name or if the filter is contained in a substring of the first/last name
+###Result:
+```
+{
+  "id": 14,
+  "first_name": "Steve",
+  "last_name": "Steve-man"
+}
+```
+
+* ``` GET /person?filter``` will return all people whose first/last name contain the letter 'd' in it
 ```
 GET /person?filter=d 
 ```
-will return all people whose first/last name contain the letter 'd' in it
+
 
 
 
