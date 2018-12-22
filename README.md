@@ -74,10 +74,26 @@ Now send API requests to http://127.0.0.1:5000/person/
 * Flask 1.0.2
 
 ## Design Decisions
-* a person's id must be non-negative
 * a person's id must be unique
-* a person's fields will be maintained for any fields left blank in a PUT request's body
-* a person's first and last name will fit a given {filter} only if they match exactly
+* a person's id must be a positive integer >= 1
+* a person's fields will be maintained if any fields are left blank in a PUT request's body
+```
+request: PUT /person/1
+body: 
+{
+    "id": "",
+    "first_name": "Steve",
+    "last_name": "Steverson"
+    
+}
+```
+assuming a person exists with id equal to 1, the "id" field of that person will remain 1 after the PUT request
+* a person's first and last name will fit a given {filter} if the filter equals the first/last name or if the filter is contained in a substring of the first/last name
+```
+GET /person?filter=d 
+```
+will return all people whose first/last name contain the letter 'd' in it
+
 
 
 
