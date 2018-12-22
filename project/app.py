@@ -79,10 +79,6 @@ def edit_person_by_id(person_id):
     data = request.get_json()
     call_status = validate_call(data)
 
-    '''
-    Only False, None, numeric zero of all types, and empty strings and containers == False,
-    so I need to check if the return is of boolean Type and equals True
-    '''
     if type(call_status) == bool and call_status:
         new_id = data['id']
         new_first = data['first_name']

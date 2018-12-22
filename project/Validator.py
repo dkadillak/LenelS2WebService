@@ -74,7 +74,7 @@ class Validator:
         new_id_code = self.does_id_exist(new_id)
 
         # if there is an error with the id passed in the body of the request, return error code
-        if isinstance(new_id_code, str):
+        if isinstance(new_id_code, str) and new_id_code != "id_doesn't_exist":
             return new_id_code
 
         # if there is an error with the person_id passed in via the URL, return error code
